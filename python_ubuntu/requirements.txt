@@ -1,0 +1,4 @@
+pudb
+ipython
+flake8
+coverage
