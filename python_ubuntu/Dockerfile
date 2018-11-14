@@ -1,13 +1,18 @@
-FROM ubuntu
-MAINTAINER Yusuke MURAOKA <yusuke@jbking.org>
-RUN apt-get update
-RUN apt-get install -y software-properties-common
+FROM ubuntu:trusty
+
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 RUN add-apt-repository ppa:fkrull/deadsnakes
-RUN apt-get update
-RUN apt-get install -y python2.7 python-pip python-dev
-RUN apt-get install -y python3 python3-pip python3-dev
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+ python2.7 python-pip python-dev \
+ python3 python3-pip python3-dev \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
 # install common utilities
-ADD requirements.txt /tmp/
+COPY requirements.txt /tmp/
 RUN pip2 install -r /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt

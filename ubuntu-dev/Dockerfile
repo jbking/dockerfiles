@@ -1,3 +1,8 @@
-FROM ubuntu
-MAINTAINER Yusuke MURAOKA <yusuke@jbking.org>
-RUN apt update; apt install -y git zip
+FROM ubuntu:trusty
+
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+ git \
+ zip \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*

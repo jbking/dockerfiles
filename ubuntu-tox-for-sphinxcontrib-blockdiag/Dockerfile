@@ -1,4 +1,8 @@
-FROM jbking/ubuntu-tox-with-deadsnakes:latest
+FROM jbking/ubuntu-tox-with-deadsnakes:14-Nov-18
 
-RUN apt-get install -y python3.5
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
+ python3.5 \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 RUN /venv/bin/pip install docutils
