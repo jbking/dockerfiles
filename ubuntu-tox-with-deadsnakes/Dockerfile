@@ -1,7 +1,7 @@
 FROM ubuntu:trusty
 
 RUN apt-get update
-RUN apt-get install -y software-properties-common
+RUN apt-get install -y --no-install-recommends software-properties-common
 RUN add-apt-repository ppa:deadsnakes/ppa
 # https://github.com/deadsnakes/issues/issues/63
 # root@aba4add276b6:/work# python3.5 -c 'import ssl'
@@ -13,7 +13,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 #     import _ssl             # if we can't import it, let the error propagate
 # ModuleNotFoundError: No module named '_ssl'
 RUN apt-get update
-RUN apt-get install -y python3.6-venv
+RUN apt-get install -y --no-install-recommends python3.6-venv
 RUN python3.6 -m venv venv
 RUN /venv/bin/pip install -U pip
 RUN /venv/bin/pip install tox
