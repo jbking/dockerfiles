@@ -16,6 +16,7 @@ RUN add-apt-repository ppa:fkrull/deadsnakes
 # ModuleNotFoundError: No module named '_ssl'
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
+ python2.7-dev \
  python3.6-dev \
  python3.6-venv \
  && apt-get clean \

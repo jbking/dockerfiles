@@ -1,4 +1,4 @@
-FROM jbking/ubuntu-tox-with-deadsnakes:14-Nov-18
+FROM jbking/ubuntu-tox-with-deadsnakes:05-Dec-18
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
