@@ -1,4 +1,4 @@
-version: '2.0'
+version: "2"
 services:
   db:
     image: mariadb:10.1
@@ -11,6 +11,8 @@ services:
     networks:
       - seafile-net
     restart: always
+    # https://github.com/portainer/portainer/issues/2576
+    mem_swappiness: -1
 
   memcached:
     image: memcached:1.5.6
@@ -19,6 +21,7 @@ services:
     networks:
       - seafile-net
     restart: always
+    mem_swappiness: -1
 
   seafile:
     image: seafileltd/seafile-mc:latest
@@ -42,6 +45,7 @@ services:
     networks:
       - seafile-net
     restart: always
+    mem_swappiness: -1
 
 networks:
   seafile-net:
