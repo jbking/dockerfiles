@@ -1,4 +1,4 @@
-FROM jbking/ubuntu-dev
+FROM jbking/ubuntu-dev:20191003-1543
 
 # hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
