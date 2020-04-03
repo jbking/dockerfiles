@@ -24,7 +24,7 @@ services:
     mem_swappiness: -1
 
   seafile:
-    image: seafileltd/seafile-mc:latest
+    image: seafileltd/seafile-mc:7.0.5
     container_name: seafile
     ports:
       - "80:80"
