@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
   portainer:
-    image: portainer/portainer:1.23.2
+    image: portainer/portainer:1.24.0
     ports:
       - "9000:9000"
     command: -H unix:///var/run/docker.sock
