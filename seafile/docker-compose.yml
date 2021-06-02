@@ -31,6 +31,7 @@ services:
 #     - "443:443"  # If https is enabled, cancel the comment.
     volumes:
       - /opt/seafile-data:/shared   # Requested, specifies the path to Seafile data persistent store.
+      - log:/opt/seafile/logs
     environment:
       - DB_HOST=db
       - DB_ROOT_PASSWD=db_dev  # Requested, the value shuold be root's password of MySQL service.
@@ -47,5 +48,16 @@ services:
     restart: always
     mem_swappiness: -1
 
+  mackerel-agent:
+    image: mackerel/mackerel-agent:0.71.2
+    environment:
+      - auto_retirement=1
+    volumes:
+      - log:/var/log/seafile/logs
+      - /etc/mackerel-agent/mackerel-agent.conf:/etc/mackerel-agent/mackerel-agent.conf
+
 networks:
   seafile-net:
+
+volumes:
+  log:
