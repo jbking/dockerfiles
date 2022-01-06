@@ -1,7 +1,7 @@
 version: "2"
 services:
   db:
-    image: mariadb:10.1
+    image: mariadb:10.5
     container_name: seafile-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=db_dev  # Requested, set the root's password of MySQL service.
@@ -24,7 +24,7 @@ services:
     mem_swappiness: -1
 
   seafile:
-    image: seafileltd/seafile-mc:7.1.5
+    image: seafileltd/seafile-mc:9.0.2
     container_name: seafile
     ports:
       - "80:80"
