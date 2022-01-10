@@ -1,24 +1,22 @@
 version: "2"
 services:
-  frontend:
-    image: ekazakov/docker-registry-frontend:latest
-    environment:
-      - ENV_DOCKER_REGISTRY_HOST=registry
-      - ENV_DOCKER_REGISTRY_PORT=5000
-    networks:
-      - registry-net
-    restart: always
-    # https://github.com/portainer/portainer/issues/2576
-    mem_swappiness: -1
   registry:
     image: registry:2
     environment:
       - REGISTRY_STORAGE_DELETE_ENABLED=true
     networks:
       - registry-net
+    # access via https port on 15000
+    ports:
+      - 15001:5000
+    volumes:
+      - registry-data:/var/lib/registry
     restart: always
     # https://github.com/portainer/portainer/issues/2576
     mem_swappiness: -1
+
+volumes:
+  registry-data:
 
 networks:
   registry-net:
